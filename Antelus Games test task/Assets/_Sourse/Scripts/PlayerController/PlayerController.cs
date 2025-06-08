@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     private CharacterController characterController;
     private float verticalRotation = 0f;
+    private bool movementEnabled = true;
 
     void Start()
     {
@@ -23,6 +24,8 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (!movementEnabled) return;
+
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
@@ -36,5 +39,10 @@ public class PlayerController : MonoBehaviour
         verticalRotation -= mouseY;
         verticalRotation = Mathf.Clamp(verticalRotation, minVerticalAngle, maxVerticalAngle);
         cameraHolder.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
+    }
+
+    public void SetMovementEnabled(bool enabled)
+    {
+        movementEnabled = enabled;
     }
 }
