@@ -88,11 +88,18 @@ public class DialogSystem : MonoBehaviour
 
     private void SwitchCamera(Camera dialogCamera)
     {
-        if (mainCamera != null) mainCamera.gameObject.SetActive(false);
-        if (dialogCamera != null) dialogCamera.gameObject.SetActive(true);
+        if (mainCamera != null)
+        {
+            mainCamera.gameObject.SetActive(false);
+        }
+
+        if (dialogCamera != null)
+        {
+            dialogCamera.gameObject.SetActive(true);
+        }
     }
 
-    public void EndDialog()
+    private void EndDialog()
     {
         isDialogActive = false;
         dialogManager.dialogPanel.SetActive(false);
