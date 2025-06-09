@@ -28,6 +28,7 @@ public class DoorController : MonoBehaviour
         if (canInteract && Input.GetKeyDown(KeyCode.E))
         {
             StartCoroutine(InteractWithDoor());
+            PlayerInstance.Instance.PlayerAnimator.PlayReachAnimation();
         }
     }
 
@@ -35,9 +36,7 @@ public class DoorController : MonoBehaviour
     {
         isAnimating = true;
         pressEText.SetActive(false);
-
-        // Анимация руки игрока
-        PlayerInstance.Instance.PlayerAnimator.PlayReachAnimation();
+        
 
         string animationName;
         if (isOpen)

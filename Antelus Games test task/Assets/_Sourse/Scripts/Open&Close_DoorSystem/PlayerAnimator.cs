@@ -2,10 +2,15 @@ using UnityEngine;
 
 public class PlayerAnimator : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
+    private Animator animator;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     public void PlayReachAnimation()
     {
-        animator.Play("Reach");
+        animator.SetTrigger("Reach");
     }
 }
